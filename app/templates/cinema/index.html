@@ -1,0 +1,89 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% for el in index %}
+    <title>{{ el.title }} </title>
+
+    <link rel="stylesheet" href="{% static 'css/cinema/index.css'%}" type="text/css">
+    <script src="{% static 'js/cinema/script.js' %}"></script>
+</head>
+<body>
+
+<div class="header" style="background: url('{{ el.banner_img.url }}');">
+    <div class="overlay">
+        <br>
+        <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+    </div>
+</div>
+<div class="container">
+
+  <br>
+  <br>
+
+
+  <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <STRONG><h1>{{ el.name }}</h1></STRONG>
+        <br>
+        <h5>2 СЕЗОНА</h5>
+        <br>
+        <p class="lead">{{ el.description }}</p>
+        <br>
+          <strong><p> <img src="https://skrinshoter.ru/s/120924/MIovT5SC.jpg?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-12-09-2024%2018:39:41.jpg" height="20px"> {{kinopoisk}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1280px-IMDB_Logo_2016.svg.png" height="20px"> {{ imdb }}</p></strong>
+      </div>
+
+      <div class="col-md-5 order-md-1">
+        <img class="img-info" src="{{ el.info_img.url }}" style="border-radius: 40px;">
+      </div>
+    </div>
+<br>
+  <br>
+
+{% endfor %}
+<h3>ДОСТУПНЫЕ СЕЗОНЫ</h3>
+  <br>
+    <div class="row row-cols-1 row-cols-md-3 g-4 box">
+{% for el in category %}
+        <div class="col">
+            <div class="card h-100" style="border-radius: 20px;">
+                <img src="{{ el.img_banner.url }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title"> {{ el.season }} сезон</h5>
+                    <label class="">{{ el.description|truncatechars:100  }}</label>
+                    <br>
+                    <br>
+
+                    <a href="" class="floating-button">Смотреть</a>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+
+    </div>
+
+</div>
+<br>
+<br>
+<br>
+
+
+
+
+
+</body>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</html>
