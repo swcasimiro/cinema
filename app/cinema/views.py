@@ -1,6 +1,6 @@
 from django.shortcuts import render
 import requests
-from .models import Index, Category
+from .models import Index, Category, Video
 
 
 # https://kinopoiskapiunofficial.tech API рейтинга
@@ -29,3 +29,13 @@ def index(request):
     }
 
     return render(request, 'cinema/index.html', data)
+
+
+def movie(request):
+    video = Video.objects.all()
+
+    data = {
+        'video': video
+    }
+
+    return render(request, 'cinema/movie.html', data)

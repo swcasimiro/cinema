@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import FileExtensionValidator
 
 # Главная страница
 class Index(models.Model):
@@ -69,4 +70,38 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'Сезон'
         verbose_name_plural = 'Сезоны'
+
+
+class Video(models.Model):
+    cat = models.ForeignKey(
+        Category,
+        related_name='Категория',
+        on_delete=models.PROTECT,
+        help_text='Сезон'
+    )
+    title = models.CharField(
+        max_length=100
+    )
+    description = models.TextField(
+        max_length=300,
+    )
+    image = models.ImageField(
+        upload_to='image/'
+    )
+    file = models.FileField(
+        upload_to='video/',
+        validators=[FileExtensionValidator(
+            allowed_extensions=['mp4']
+        )]
+    )
+    create_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Cерия'
+        verbose_name_plural = 'Серии'
 

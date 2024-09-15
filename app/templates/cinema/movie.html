@@ -1,0 +1,28 @@
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+{% for el in video %}
+<center>
+          <video
+              id="my-video"
+              class="video-js"
+              controls
+              preload="auto"
+              width="1280"
+              height="720"
+              data-setup="{}"
+          >
+            <source src="{{ el.file.url }}" type="video/mp4"/>
+          </video>
+    </center>
+{% endfor %}
+</body>
+</html>
