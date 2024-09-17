@@ -32,10 +32,19 @@ def index(request):
 
 
 def movie(request):
+    response = requests.get(base_url, headers=appid)
+
+    if response.status_code == 200:
+        response = requests.get(base_url, headers=appid)
+    else:
+        response = 'Недоступно'
+
     video = Video.objects.all()
 
     data = {
-        'video': video
+        'video': video,
+        'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
+        'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }
 
     return render(request, 'cinema/movie.html', data)
