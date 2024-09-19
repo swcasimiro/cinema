@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import requests
+
 from .models import Index, Category, Video
 
 
@@ -31,7 +32,8 @@ def index(request):
     return render(request, 'cinema/index.html', data)
 
 
-def movie(request):
+def movie(request, slug, slug_video):
+    # api kinopoisk
     response = requests.get(base_url, headers=appid)
 
     if response.status_code == 200:
@@ -39,10 +41,13 @@ def movie(request):
     else:
         response = 'Недоступно'
 
-    video = Video.objects.all()
+    # video model + category models detail
+    video = Video.objects.select_related('cat').get(slug=slug_video)
+    cat = get_object_or_404(Category, slug=slug)
 
     data = {
         'video': video,
+        'cat': cat,
         'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
         'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }

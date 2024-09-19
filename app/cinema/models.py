@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import FileExtensionValidator
+from django.core.validators import FileExtensionValidator # валидатор mp4
 
 # Главная страница
 class Index(models.Model):
@@ -80,19 +80,27 @@ class Video(models.Model):
         help_text='Сезон'
     )
     title = models.CharField(
-        max_length=100
-    )
-    image = models.ImageField(
-        upload_to='image/'
+        'Номер серии.',
+        max_length=100,
+        help_text='format - № серия'
     )
     file = models.FileField(
+        'Производимый видеофайл',
         upload_to='video/',
         validators=[FileExtensionValidator(
             allowed_extensions=['mp4']
         )]
     )
     create_at = models.DateTimeField(
+        'Когда создан',
         auto_now_add=True
+    )
+    slug = models.SlugField(
+        help_text='Заполнится автоматически',
+        max_length=255,
+        unique=True,
+        db_index=True,
+        verbose_name="URL"
     )
 
     def __str__(self):
@@ -102,3 +110,29 @@ class Video(models.Model):
         verbose_name = 'Cерия'
         verbose_name_plural = 'Серии'
 
+
+class Comment(models.Model):
+    video_c = models.ForeignKey(
+        Video,
+        related_name='Видео',
+        on_delete=models.PROTECT
+    )
+    name = models.CharField(
+        'Имя пользователя',
+        max_length=30,
+    )
+    description = models.TextField(
+        'Комментарий',
+        max_length=500
+    )
+    create_at = models.DateTimeField(
+        'Когда создан',
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return f"{self.video} - {self.name} [{self.create_at}]"
+
+    class Meta:
+        verbose_name = 'Комментарий'
+        verbose_name_plural = 'Комментарии'

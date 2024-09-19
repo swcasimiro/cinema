@@ -8,26 +8,34 @@
     <script src="{% static 'js/cinema/script.js' %}"></script>
 
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ cat.name }} - {{ video.title }}</title>
 </head>
 <body>
 <div class="container">
 
 
-{% for el in video %}
     <br>
-    <br>
+
+<div class="card mb-3 shadow">
+  <div class="card-body">
+
+
+
+
+
+
+<h2>{{ video.title }}</h2>
     <strong><p> <img src="https://skrinshoter.ru/s/120924/MIovT5SC.jpg?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-12-09-2024%2018:39:41.jpg" height="20px"> {{kinopoisk}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1280px-IMDB_Logo_2016.svg.png" height="20px"> {{ imdb }}</p></strong>
-<h2>{{ el.title }}</h2>
+
           <video
               class="my-video"
               controls
               preload="auto"
-              width="1280"
-              height="720"
+              width="1260"
+              height="710"
               data-setup="{}"
           >
-            <source src="{{ el.file.url }}" type="video/mp4"/>
+            <source src="{{ video.file.url }}" type="video/mp4"/>
           </video>
 
 <br>
@@ -75,11 +83,14 @@
 
   </div>
 </div>
-{% endfor %}
+
 <br>
-    <br>
-    <br>
-    <br>
+
+
+
+
+</div>
+</div>
     <br>
     <br>
 </div>
