@@ -81,7 +81,7 @@ class Video(models.Model):
     )
     title = models.CharField(
         'Номер серии.',
-        max_length=100,
+        max_length=8,
         help_text='format - № серия'
     )
     file = models.FileField(
@@ -98,7 +98,6 @@ class Video(models.Model):
     slug = models.SlugField(
         help_text='Заполнится автоматически',
         max_length=255,
-        unique=True,
         db_index=True,
         verbose_name="URL"
     )

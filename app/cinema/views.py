@@ -43,11 +43,13 @@ def movie(request, slug, slug_video):
 
     # video model + category models detail
     video = Video.objects.select_related('cat').get(slug=slug_video)
-    cat = get_object_or_404(Category, slug=slug)
+    category = get_object_or_404(Category, slug=slug)
+    video_list = Video.objects.select_related('cat').filter(cat=category)
 
     data = {
         'video': video,
-        'cat': cat,
+        'video_list': video_list,
+        'cat': category,
         'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
         'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }
