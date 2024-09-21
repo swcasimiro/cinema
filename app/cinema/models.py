@@ -103,7 +103,7 @@ class Video(models.Model):
     )
 
     def __str__(self):
-        return self.title
+        return f'{self.cat} - {self.title}'
 
     class Meta:
         verbose_name = 'Cерия'
@@ -124,13 +124,27 @@ class Comment(models.Model):
         'Комментарий',
         max_length=500
     )
+
     create_at = models.DateTimeField(
         'Когда создан',
         auto_now_add=True
     )
 
+    CHOICE_TYPE_REVIEW = (
+        ('Нейтральная', 'Нейтральная'),
+        ('Положительная', 'Положительная'),
+        ('Отрицательная', 'Отрицательная')
+    )
+
+    type_r = models.CharField(
+        'Статус рецензии',
+        choices=CHOICE_TYPE_REVIEW,
+        max_length=30,
+        default='Нейтральная'
+    )
+
     def __str__(self):
-        return f"{self.video} - {self.name} [{self.create_at}]"
+        return f"{self.video_c} - {self.name} [{self.create_at}]"
 
     class Meta:
         verbose_name = 'Комментарий'

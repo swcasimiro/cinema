@@ -47,20 +47,34 @@
 
     <br>
     <br>
-<form>
-<h5>Оставить комментарий:</h5>
+<form method="post">
+{% csrf_token %}
+<h5>Оставить рецензию:</h5>
     <br>
   <div class="form-group row">
     <label class="col-sm-2 col-form-label">Никнейм</label>
     <div class="col-sm-10">
-      <input class="form-control">
+      {{ form.name }}
     </div>
   </div>
     <br>
   <div class="form-group row">
     <label  class="col-sm-2 col-form-label">Комментарий</label>
     <div class="col-sm-10">
-      <textarea class="form-control"></textarea>
+      {{ form.description }}
+    </div>
+  </div>
+    <br>
+      <div class="form-group row">
+    <label  class="col-sm-2 col-form-label">Статус рецензии</label>
+    <div class="col-sm-10">
+<!--      <select class="form-select" aria-label="Default select example">-->
+<!--        <option selected>Нейтральная</option>-->
+<!--        <option value="1">Положительная</option>-->
+<!--        <option value="2">Отрицательная</option>-->
+<!--      </select>-->
+
+        {{ form.type_r }}
     </div>
   </div>
     <center>
@@ -68,19 +82,22 @@
   <button type="submit" class="btn btn-secondary mb-2">Отправить</button>
     </center>
 </form>
-<h5>Последние комментарии:</h5>
+<h5>Последние рецензии:</h5>
       <br>
+
+{% for el in comment_list %}
 <div class="card">
   <div class="card-header">
-    username
+    {{ el.name }} 
   </div>
   <div class="card-body">
 
-    <p class="card-text">coment and more text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text</p>
+    <p class="card-text">{{ el.description }}</p>
 
   </div>
 </div>
-
+      <br>
+{% endfor %}
 <br>
 
 

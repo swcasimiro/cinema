@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
-from .models import Index, Category, Video
+from .models import Index, Category, Video, Comment
 
 admin.site.register(Index)
+admin.site.register(Comment)
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
