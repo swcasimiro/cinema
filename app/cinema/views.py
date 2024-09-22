@@ -53,7 +53,7 @@ def movie(request, slug, slug_video):
             post = form.save(commit=False)
             post.video_c = video
             post.save()
-            return redirect('/')
+            return redirect(f'/movie/{slug}/{slug_video}')
 
     else:
         form = CommentForm()
@@ -61,12 +61,24 @@ def movie(request, slug, slug_video):
     # comment query
     comment_list = Comment.objects.filter(video_c=video).select_related('video_c')
 
+    # reviews quantity
+    comment_success = Comment.objects.filter(type_r='Положительная').filter(video_c=video).values('type_r')
+    comment_danger = Comment.objects.filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
+    comment_neutral = Comment.objects.filter(type_r='Нейтральная').filter(video_c=video).values('type_r')
+
     data = {
         'video': video,
         'video_list': video_list,
         'cat': category,
         'form': form,
+
+        # comment info and list
+        'comment_success': comment_success,
+        'comment_danger': comment_danger,
+        'comment_neutral': comment_neutral,
         'comment_list': comment_list,
+
+        # api https://kinopoiskapiunofficial.tech
         'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
         'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }
