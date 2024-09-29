@@ -11,6 +11,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 Django==5.1.1
 django-debug-toolbar==4.4.6
+djangorestframework==3.15.2
 idna==3.10
 kombu==5.4.2
 pillow==10.4.0

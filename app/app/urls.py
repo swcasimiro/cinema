@@ -5,7 +5,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('cinema.urls'))
+    path('', include('cinema.urls')),
+    path('api-auth/', include('rest_framework.urls'))
 ]
 
 if settings.DEBUG:

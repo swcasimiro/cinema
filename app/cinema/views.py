@@ -23,10 +23,11 @@ def index(request):
         response = 'Недоступно'
 
     data = {
-        'kinopoisk': response.json()['ratingKinopoisk'], # получаем рейтинг кинопоиска
-        'imdb': response.json()['ratingImdb'], # получаем рейтин Imdb
         'index': index,
         'category': category
+
+        # 'kinopoisk': response.json()['ratingKinopoisk'], # получаем рейтинг кинопоиска
+        # 'imdb': response.json()['ratingImdb'], # получаем рейтин Imdb
     }
 
     return render(request, 'cinema/index.html', data)
@@ -79,8 +80,8 @@ def movie(request, slug, slug_video):
         'comment_list': comment_list,
 
         # api https://kinopoiskapiunofficial.tech
-        'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
-        'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
+        # 'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
+        # 'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }
 
     return render(request, 'cinema/movie.html', data)
