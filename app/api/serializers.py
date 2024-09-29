@@ -1,4 +1,7 @@
 from rest_framework import serializers
 from cinema.models import Comment
 
-class
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
