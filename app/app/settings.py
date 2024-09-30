@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    'debug_toolbar', # debug django
+    'drf_yasg', # swagger
     'cinema',
     'api',
     'rest_framework',
