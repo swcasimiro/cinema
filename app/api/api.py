@@ -1,8 +1,10 @@
 from rest_framework import viewsets
 from requests import Response
-from cinema.models import Comment
+from cinema.models import Comment, Video
 
 from .serializers import CommentSerializer
+
+
 
 class CommentApiViewset(viewsets.ModelViewSet):
     queryset = Comment.objects.all()
