@@ -67,11 +67,22 @@ def movie(request, slug, slug_video):
     comment_danger = Comment.objects.filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
     comment_neutral = Comment.objects.filter(type_r='Нейтральная').filter(video_c=video).values('type_r')
 
+    # rating system - 5 points
+    ranked = len(comment_success)*5 + len(comment_danger)
+    len_comment = len(comment_success) + len(comment_danger)
+
+    if len_comment:
+        ranked = ranked / len_comment
+    else:
+        ranked = 'Пусто =('
+
+
     data = {
         'video': video,
         'video_list': video_list,
         'cat': category,
         'form': form,
+        'ranked': ranked,
 
         # comment info and list
         'comment_success': comment_success,
