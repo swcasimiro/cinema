@@ -11,9 +11,9 @@ appid = {'X-API-KEY': 'f98a5461-d00d-4929-9a5c-e441318daba7'}
 
 
 def index(request):
-    response = requests.get(base_url, headers=appid)
     index = Index.objects.all()
     category = Category.objects.all()
+    response = requests.get(base_url, headers=appid)
 
 
     # отрабатывает исключения.
@@ -26,6 +26,7 @@ def index(request):
         'index': index,
         'category': category
 
+        # api https://kinopoiskapiunofficial.tech
         # 'kinopoisk': response.json()['ratingKinopoisk'], # получаем рейтинг кинопоиска
         # 'imdb': response.json()['ratingImdb'], # получаем рейтин Imdb
     }
@@ -72,9 +73,9 @@ def movie(request, slug, slug_video):
     len_comment = len(comment_success) + len(comment_danger)
 
     if len_comment:
-        ranked = ranked / len_comment
+        ranked = float(f"{ranked / len_comment:.{1}f}")
     else:
-        ranked = 'Пусто =('
+        ranked = 'Нет отзывов'
 
 
     data = {
