@@ -3,28 +3,17 @@ import requests
 from .forms import CommentForm
 from .models import Index, Category, Video, Comment
 
-
-# https://kinopoiskapiunofficial.tech API рейтинга
-base_url = "https://kinopoiskapiunofficial.tech/api/v2.2/films/1186526"
-appid = {'X-API-KEY': 'f98a5461-d00d-4929-9a5c-e441318daba7'}
-
+# import business logic
+from .services import points, appid, base_url, response
 
 
 def index(request):
     index = Index.objects.all()
     category = Category.objects.all()
-    response = requests.get(base_url, headers=appid)
-
-
-    # отрабатывает исключения.
-    if response.status_code == 200:
-        response = requests.get(base_url, headers=appid)
-    else:
-        response = 'Недоступно'
 
     data = {
         'index': index,
-        'category': category
+        'category': category,
 
         # api https://kinopoiskapiunofficial.tech
         # 'kinopoisk': response.json()['ratingKinopoisk'], # получаем рейтинг кинопоиска
@@ -35,14 +24,6 @@ def index(request):
 
 
 def movie(request, slug, slug_video):
-    # api kinopoisk
-    response = requests.get(base_url, headers=appid)
-
-    if response.status_code == 200:
-        response = requests.get(base_url, headers=appid)
-    else:
-        response = 'Недоступно'
-
     # video model + category models detail
     video = Video.objects.select_related('cat').get(slug=slug_video)
     category = get_object_or_404(Category, slug=slug)
@@ -66,16 +47,6 @@ def movie(request, slug, slug_video):
     # reviews quantity
     comment_success = Comment.objects.filter(type_r='Положительная').filter(video_c=video).values('type_r')
     comment_danger = Comment.objects.filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
-    comment_neutral = Comment.objects.filter(type_r='Нейтральная').filter(video_c=video).values('type_r')
-
-    # rating system - 5 points
-    ranked = len(comment_success)*5 + len(comment_danger)
-    len_comment = len(comment_success) + len(comment_danger)
-
-    if len_comment:
-        ranked = float(f"{ranked / len_comment:.{1}f}")
-    else:
-        ranked = 'Нет отзывов'
 
 
     data = {
@@ -83,12 +54,11 @@ def movie(request, slug, slug_video):
         'video_list': video_list,
         'cat': category,
         'form': form,
-        'ranked': ranked,
+        'ranked': points(comment_success, comment_danger), # import services
 
         # comment info and list
         'comment_success': comment_success,
         'comment_danger': comment_danger,
-        'comment_neutral': comment_neutral,
         'comment_list': comment_list,
 
         # api https://kinopoiskapiunofficial.tech
