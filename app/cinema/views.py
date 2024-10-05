@@ -60,10 +60,6 @@ def movie(request, slug, slug_video):
         'comment_success': comment_success,
         'comment_danger': comment_danger,
         'comment_list': comment_list,
-
-        # api https://kinopoiskapiunofficial.tech
-        # 'kinopoisk': response.json()['ratingKinopoisk'],  # получаем рейтинг кинопоиска
-        # 'imdb': response.json()['ratingImdb'],  # получаем рейтин Imdb
     }
 
     return render(request, 'cinema/movie.html', data)

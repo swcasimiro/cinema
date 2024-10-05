@@ -3,7 +3,6 @@
 
 <html lang="en">
 <head>
-
     <link rel="stylesheet" href="{% static 'css/cinema/index.css'%}" type="text/css">
     <script src="{% static 'js/cinema/script.js' %}"></script>
 
@@ -11,60 +10,83 @@
     <title>{{ cat.name }} - {{ video.title }}</title>
 </head>
 <body>
+
+
+<section class="background-image-location"
+         style="background-image: url(https://cdn.manilastandard.net/wp-content/uploads/2024/03/1-SM-Cinema-now-features-ultra-comfortable-seating-high-definition-visuals-and-enhanced-sound-for-the-ultimate-cinematic-journey-1-scaled.jpg); background-repeat: no-repeat; height: 400px; background-size: cover;">
+    <center>
+        <p class="blue blockquote text-center">РЕЙТИНГ СЕРИИ - {{ ranked }}</p>
+
+
+</section>
+
 <div class="container">
 
 
+<!--    <div class="card mb-3">-->
+<!--  <img src="..." class="card-img-top" alt="...">-->
+<!--  <div class="card-body">-->
+<!--    <h5 class="card-title">Card title</h5>-->
+<!--    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+<!--    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--    <center>-->
+<!--<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">-->
+<!--  <div class="card-header">Рейтинг       (<label class="text-success mb-0"> {{ comment_success | length }}  </label> |-->
+<!--      <label class="text-danger mb-0"> {{ comment_danger | length }}</label>)</div>-->
+<!--  <div class="card-body">-->
+
+<!--    <h1 class="display-4">{{ ranked }}</h1>-->
+
+<!--  </div>-->
+<!--</div>-->
+
+
+<!--      <div>-->
+
+
+
+<!--          </div>-->
+<!--          </center>-->
+
     <br>
 
-<div class="card mb-3 shadow">
+<div class="">
   <div class="card-body">
 
 
+<h1>{{ video.title }}</h1>
 
 
 
-
-<h2>{{ video.title }}</h2>
-    <strong><p> <img src="https://skrinshoter.ru/s/120924/MIovT5SC.jpg?download=1&name=%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-12-09-2024%2018:39:41.jpg" height="20px"> {{kinopoisk}} <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/IMDB_Logo_2016.svg/1280px-IMDB_Logo_2016.svg.png" height="20px"> {{ imdb }}</p></strong>
 
           <video
               class="my-video"
               controls
               preload="auto"
-              width="1260"
-              height="710"
+              width="1280"
+              height="720"
               data-setup="{}"
           >
             <source src="{{ video.file.url }}" type="video/mp4"/>
           </video>
 
 <br>
-    <br>
+      <br>
 
 {% for el in video_list %}
     <a type="button" href="/movie/{{ el.cat.slug }}/{{ el.slug }}" class="btn btn-dark">{{ el.title }}</a>
 {% endfor %}
-<hr>
-      <br>
 
-<center>
-<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
-  <div class="card-header">Рейтинг       (<label class="text-success mb-0"> {{ comment_success | length }}  </label> |
-      <label class="text-danger mb-0"> {{ comment_danger | length }}</label>)</div>
-  <div class="card-body">
 
-    <h1 class="display-4">{{ ranked }}</h1>
 
-  </div>
+
+</div>
 </div>
 
 
-      <div>
-
-
-
-          </div>
-          </center>
 
 
       <br>
@@ -107,7 +129,8 @@
 </form>
 
       <br>
-<strong><p>Количество рецензий: {{ comment_list | length }}</p></strong>
+<strong><h5>{{ comment_list | length }} комментариев</h5></strong>
+    <hr>
 {% for el in comment_list %}
 <div class="card">
   <div class="card-header">
@@ -138,8 +161,126 @@
 </div>
     <br>
     <br>
-</div>
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+
+<style>
+        .box {
+      animation: 2s show ease;
+    }
+
+    @keyframes show {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .floating-button {
+      text-decoration: none;
+      display: inline-block;
+      width: 140px;
+      height: 45px;
+      line-height: 45px;
+      border-radius: 10px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      text-align: center;
+      letter-spacing: 3px;
+      font-weight: 600;
+      color: #524f4e;
+      background: white;
+      box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+      transition: .3s;
+    }
+    .floating-button:hover {
+      background: #2EE59D;
+      box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+      color: white;
+      transform: translateY(-7px);
+    }
+
+
+    .col {
+       transition: 0.5s; /* Время эффекта */
+    }
+
+    .col:hover {
+      transform: scale(1.05); /* Увеличиваем масштаб */
+    }
+
+
+    section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 125px 100px;
+    }
+
+    @media (max-width: 1000px){
+
+        section{
+            padding: 100px 50px;
+        }
+
+    }
+
+
+    .background-image-location{
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+
+    @media (max-width: 600px){
+
+        section{
+            padding: 80px 30px;
+        }
+
+    }
+
+    section h3.title{
+        color: #414a4f;
+        text-transform: capitalize;
+        font: bold 32px 'Open Sans', sans-serif;
+        margin-bottom: 35px;
+        text-align: center;
+    }
+
+    section p{
+        max-width: 800px;
+        text-align: center;
+        margin-bottom: 35px;
+        padding: 0 20px;
+        line-height: 2;
+    }
+
+     .blue {
+      box-shadow: 0 10px 40px 0 #3985bf;
+      background: #349beb;
+      border-radius: 10px;
+      text-decoration:none:
+      transition: 0.5s;
+      color: #FFFFFF;
+      font-size: 40px;
+      animation: shadow_red 4s infinite alternate;
+    }
+
+    @keyframes shadow_red {
+      from {
+        box-shadow: 0 0 50px 10px #3985bf;
+      }
+      to {
+        box-shadow: 0 0 90px 40px #3985bf;
+      }
+    }
+</style>
+
 </body>
 </html>
