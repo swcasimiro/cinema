@@ -43,6 +43,7 @@ def movie(request, slug, slug_video):
 
     # comment query
     comment_list = Comment.objects.filter(video_c=video).select_related('video_c')
+    comment_len = len(comment_list)
 
     # reviews quantity
     comment_success = Comment.objects.filter(type_r='Положительная').filter(video_c=video).values('type_r')
@@ -60,6 +61,7 @@ def movie(request, slug, slug_video):
         'comment_success': comment_success,
         'comment_danger': comment_danger,
         'comment_list': comment_list,
+        'comment_len': comment_len,
     }
 
     return render(request, 'cinema/movie.html', data)
