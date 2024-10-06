@@ -10,54 +10,50 @@
     <title>{{ cat.name }} - {{ video.title }}</title>
 </head>
 <body>
+<header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-camera-video-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2z"/>
+</svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link px-2 text-secondary"></a></li>
+
+        </ul>
 
 
-<section class="background-image-location"
-         style="background-image: url(https://cdn.manilastandard.net/wp-content/uploads/2024/03/1-SM-Cinema-now-features-ultra-comfortable-seating-high-definition-visuals-and-enhanced-sound-for-the-ultimate-cinematic-journey-1-scaled.jpg); background-repeat: no-repeat; height: 400px; background-size: cover;">
-    <center>
-        <p class="blue blockquote text-center">РЕЙТИНГ СЕРИИ - {{ ranked }}</p>
+
+        <div class="text-end">
+          <a target="_blank" href="https://github.com/swcasimiro" class="btn btn-outline-light me-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+</svg> swcasimiro
+
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<br>
 
 
-</section>
+<!--        <p class="blue blockquote text-center">РЕЙТИНГ СЕРИИ - {{ ranked }}</p>-->
+
+
+
 
 <div class="container">
 
-
-<!--    <div class="card mb-3">-->
-<!--  <img src="..." class="card-img-top" alt="...">-->
-<!--  <div class="card-body">-->
-<!--    <h5 class="card-title">Card title</h5>-->
-<!--    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
-<!--    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
-<!--  </div>-->
-<!--</div>-->
-
-<!--    <center>-->
-<!--<div class="card text-dark bg-light mb-3" style="max-width: 18rem;">-->
-<!--  <div class="card-header">Рейтинг       (<label class="text-success mb-0"> {{ comment_success | length }}  </label> |-->
-<!--      <label class="text-danger mb-0"> {{ comment_danger | length }}</label>)</div>-->
-<!--  <div class="card-body">-->
-
-<!--    <h1 class="display-4">{{ ranked }}</h1>-->
-
-<!--  </div>-->
-<!--</div>-->
-
-
-<!--      <div>-->
-
-
-
-<!--          </div>-->
-<!--          </center>-->
-
-    <br>
 
 <div class="">
   <div class="card-body">
 
 
-<h1>{{ video.title }}</h1>
+<h1><label class="btn btn-outline-dark me-2">РЕЙТИНГ СЕРИИ - {{ ranked }}</label> <label class="btn btn-outline-dark me-2">{{ video.title }}</label> </h1>
 
 
 
@@ -92,6 +88,8 @@
       <br>
       <br>
 
+
+
 <form method="post">
 {% csrf_token %}
 <h5>Оставить рецензию:</h5>
@@ -113,11 +111,6 @@
       <div class="form-group row">
     <label  class="col-sm-2 col-form-label">Статус рецензии</label>
     <div class="col-sm-10">
-<!--      <select class="form-select" aria-label="Default select example">-->
-<!--        <option selected>Нейтральная</option>-->
-<!--        <option value="1">Положительная</option>-->
-<!--        <option value="2">Отрицательная</option>-->
-<!--      </select>-->
 
         {{ form.type_r }}
     </div>
@@ -162,125 +155,10 @@
     <br>
     <br>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
 
-<style>
-        .box {
-      animation: 2s show ease;
-    }
-
-    @keyframes show {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .floating-button {
-      text-decoration: none;
-      display: inline-block;
-      width: 140px;
-      height: 45px;
-      line-height: 45px;
-      border-radius: 10px;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 11px;
-      text-transform: uppercase;
-      text-align: center;
-      letter-spacing: 3px;
-      font-weight: 600;
-      color: #524f4e;
-      background: white;
-      box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-      transition: .3s;
-    }
-    .floating-button:hover {
-      background: #2EE59D;
-      box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-      color: white;
-      transform: translateY(-7px);
-    }
-
-
-    .col {
-       transition: 0.5s; /* Время эффекта */
-    }
-
-    .col:hover {
-      transform: scale(1.05); /* Увеличиваем масштаб */
-    }
-
-
-    section{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        padding: 125px 100px;
-    }
-
-    @media (max-width: 1000px){
-
-        section{
-            padding: 100px 50px;
-        }
-
-    }
-
-
-    .background-image-location{
-        background-position: center center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-    }
-
-
-    @media (max-width: 600px){
-
-        section{
-            padding: 80px 30px;
-        }
-
-    }
-
-    section h3.title{
-        color: #414a4f;
-        text-transform: capitalize;
-        font: bold 32px 'Open Sans', sans-serif;
-        margin-bottom: 35px;
-        text-align: center;
-    }
-
-    section p{
-        max-width: 800px;
-        text-align: center;
-        margin-bottom: 35px;
-        padding: 0 20px;
-        line-height: 2;
-    }
-
-     .blue {
-      box-shadow: 0 10px 40px 0 #3985bf;
-      background: #349beb;
-      border-radius: 10px;
-      text-decoration:none:
-      transition: 0.5s;
-      color: #FFFFFF;
-      font-size: 40px;
-      animation: shadow_red 4s infinite alternate;
-    }
-
-    @keyframes shadow_red {
-      from {
-        box-shadow: 0 0 50px 10px #3985bf;
-      }
-      to {
-        box-shadow: 0 0 90px 40px #3985bf;
-      }
-    }
-</style>
 
 </body>
 </html>
