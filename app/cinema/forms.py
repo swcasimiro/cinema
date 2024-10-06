@@ -20,6 +20,7 @@ class CommentForm(ModelForm):
             }),
             "description": Textarea(attrs={
                 'class': 'form-control',
+                'id': 'exampleFormControlTextarea1',
             }),
             "type_r": Select(attrs={
                 'class': 'form-select',
