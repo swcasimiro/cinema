@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 import requests
 from .forms import CommentForm
 from .models import Index, Category, Video, Comment
@@ -48,6 +49,18 @@ def movie(request, slug, slug_video):
     # reviews quantity
     comment_success = Comment.objects.filter(type_r='Положительная').filter(video_c=video).values('type_r')
     comment_danger = Comment.objects.filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
+
+    # filters 
+    filter_success = request.GET.get('filter-success', '')
+
+    if filter_success:
+        comment_list = Comment.objects.filter(video_c=video).select_related('video_c').filter(type_r='Положительная')
+
+    filter_danger = request.GET.get('filter-danger', '')
+
+    if filter_danger:
+        comment_list = Comment.objects.filter(video_c=video).select_related('video_c').filter(type_r='Отрицательная')
+
 
 
     data = {

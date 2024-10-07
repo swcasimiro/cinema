@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.core.validators import FileExtensionValidator # валидатор mp4
 
 # Главная страница
@@ -67,6 +68,9 @@ class Category(models.Model):
     def __str__(self):
         return f'{self.season} сезон'
 
+    def get_absolute_url(self):
+        return reverse('category', kwargs={'category_slug': self.slug})
+
     class Meta:
         verbose_name = 'Сезон'
         verbose_name_plural = 'Сезоны'
@@ -104,6 +108,9 @@ class Video(models.Model):
 
     def __str__(self):
         return f'{self.cat} - {self.title}'
+
+    def get_absolute_url(self):
+        return reverse('video', kwargs={'video_slug': self.slug})
 
     class Meta:
         verbose_name = 'Cерия'
