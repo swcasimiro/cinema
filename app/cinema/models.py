@@ -1,6 +1,9 @@
 from django.db import models
 from django.urls import reverse
 from django.core.validators import FileExtensionValidator # валидатор mp4
+from django.db import models
+from tinymce.models import HTMLField
+
 
 # Главная страница
 class Index(models.Model):
@@ -127,10 +130,7 @@ class Comment(models.Model):
         'Имя пользователя',
         max_length=30,
     )
-    description = models.TextField(
-        'Комментарий',
-        max_length=500
-    )
+    description = HTMLField()
 
     create_at = models.DateTimeField(
         'Когда создан',

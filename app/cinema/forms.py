@@ -2,6 +2,7 @@ from .models import *
 from django import forms
 from django.forms import ModelForm, TextInput, Textarea, \
     Select, CheckboxInput, PasswordInput, EmailInput
+from tinymce.widgets import TinyMCE
 
 
 class CommentForm(ModelForm):
@@ -20,7 +21,6 @@ class CommentForm(ModelForm):
             }),
             "description": Textarea(attrs={
                 'class': 'form-control',
-                'id': 'exampleFormControlTextarea1',
             }),
             "type_r": Select(attrs={
                 'class': 'form-select',

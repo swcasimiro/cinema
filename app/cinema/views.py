@@ -10,6 +10,7 @@ def index(request):
     index = Index.objects.all()
     category = Category.objects.all()
 
+
     data = {
         'index': index,
         'category': category,

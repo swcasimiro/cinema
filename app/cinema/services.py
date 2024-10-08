@@ -21,4 +21,3 @@ def points(success: list, danger: list) -> float:
         return float(f"{ranked / len_comment:.{1}f}")
 
     return 0.0
-
