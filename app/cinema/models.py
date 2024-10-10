@@ -130,7 +130,10 @@ class Comment(models.Model):
         'Имя пользователя',
         max_length=30,
     )
-    description = HTMLField()
+    description = models.TextField(
+        'Комментарий',
+        max_length=600
+    )
 
     create_at = models.DateTimeField(
         'Когда создан',
