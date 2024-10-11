@@ -3,7 +3,8 @@ from .forms import CommentForm
 from .models import Index, Category, Video, Comment
 
 # import business logic
-from .services import points, appid, base_url, response
+# from .services import points, appid, base_url, response
+from .services import MovieService
 
 
 def index(request):
@@ -28,6 +29,9 @@ def movie(request, slug, slug_video):
     video = Video.objects.select_related('cat').get(slug=slug_video)
     category = get_object_or_404(Category, slug=slug)
     video_list = Video.objects.select_related('cat').filter(cat=category)
+
+    # views checker
+    MovieService.view_check(video)
 
     # form comment
     if request.method == 'POST':
@@ -66,7 +70,7 @@ def movie(request, slug, slug_video):
         'video_list': video_list,
         'cat': category,
         'form': form,
-        'ranked': points(comment_success, comment_danger), # import services
+        'ranked': MovieService.points(comment_success, comment_danger), # import services
 
         # comment info and list
         'comment_success': comment_success,

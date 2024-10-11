@@ -108,12 +108,18 @@ class Video(models.Model):
         db_index=True,
         verbose_name="URL"
     )
+    view = models.IntegerField(
+        'Просмотры',
+        default=0
+    )
 
     def __str__(self):
         return f'{self.cat} - {self.title}'
 
     def get_absolute_url(self):
         return reverse('video', kwargs={'video_slug': self.slug})
+
+
 
     class Meta:
         verbose_name = 'Cерия'
