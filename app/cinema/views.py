@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CommentForm
 from .models import Index, Category, Video, Comment
-
+from django.contrib.humanize.templatetags.humanize import intcomma
 # import business logic
 # from .services import points, appid, base_url, response
 from .services import MovieService
@@ -32,6 +32,9 @@ def movie(request, slug, slug_video):
 
     # views checker
     MovieService.view_check(video)
+    # format: example - 1 223
+    video.formatted_view = intcomma(video.view)
+    video.save()
 
     # form comment
     if request.method == 'POST':

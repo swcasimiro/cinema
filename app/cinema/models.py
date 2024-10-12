@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import FileExtensionValidator # валидатор mp4
 from django.db import models
+from django.contrib.humanize.templatetags.humanize import intcomma
 from tinymce.models import HTMLField
 
 
@@ -86,6 +87,11 @@ class Video(models.Model):
         on_delete=models.PROTECT,
         help_text='Сезон'
     )
+    poster = models.ImageField(
+        'Постер видео',
+        upload_to='posters/%Y/%m/%d/',
+        blank=True
+    )
     title = models.CharField(
         'Номер серии.',
         max_length=8,
@@ -112,6 +118,14 @@ class Video(models.Model):
         'Просмотры',
         default=0
     )
+    formatted_view = models.CharField(  # форматирование числа
+        max_length=20,
+        blank=True,
+    )
+
+    def format_number(self, *args, **kwargs):
+        self.formatted_view = intcomma(self.view)
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return f'{self.cat} - {self.title}'
