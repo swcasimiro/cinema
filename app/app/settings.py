@@ -47,13 +47,15 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt', # jwt token
     'rest_framework_simplejwt.token_blacklist', # jwt token
     'django_celery_results', # celery
-    'rest_framework',
+    'django_celery_beat', # для выставления времени задачам
+    'rest_framework', # drf
     'debug_toolbar', # debug django
     'drf_yasg', # swagger
     'tinymce',  # редактор текста
     'cinema',
     'api',
 ]
+
 
 
 MIDDLEWARE = [
@@ -195,9 +197,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # celery
-CELERY_BROKER_URL = "redis://localhost:6379"
-CELERY_RESULT_BACKEND = "redis://localhost:6379"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 CELERY_CACHE_BACKEND = 'default'
+CELERY_BROKER_TRANSPORT_OPTIONS = {'visibility_timeout': 3600}
+
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZE = 'json'
+
+
+# для celery beat автоподставление
+CELERY_BEAT_SCHEDULER = "django_celery_beat.schedulers:DatabaseScheduler"
 
 
 

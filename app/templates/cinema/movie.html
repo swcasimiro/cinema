@@ -56,10 +56,10 @@
     {% if ranked < 2.5 and ranked > 0.9 %}
     <span class="badge text-bg-danger">{{ ranked }}</span>
     {% endif %}
-    {% if ranked > 4.1 %}
+    {% if ranked > 4.0 %}
     <span class="badge text-bg-success">{{ ranked }}</span>
     {% endif %}
-    {% if ranked < 4.1 and ranked > 2.5 %}
+    {% if ranked < 4.1 and ranked > 2.6 %}
     <span class="badge text-bg-secondary">{{ ranked }}</span>
     {% endif %}
 
@@ -81,7 +81,7 @@
     {{ comment_len }}</p>
 
    <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
-<video id="video-id" poster="/media/posters/2024/10/11/start.jpg" width="1280" height="720"><source src="{{ video.file.url }}" type="video/mp4" />
+<video id="video-id" width="1280" height="720"><source src="{{ video.file.url }}" type="video/mp4" />
 <script>
     var myFP = fluidPlayer(
         'video-id',	{
@@ -96,7 +96,7 @@
 			"height": null,
 			"width": null
 		},
-		"autoPlay": true,
+		"autoPlay": false,
 		"mute": true,
 		"allowTheatre": true,
 		"playPauseAnimation": true,
@@ -105,7 +105,7 @@
 		"playButtonShowing": true,
 		"fillToContainer": false,
 		"primaryColor": "#214d45",
-		"posterImage": ""
+		"posterImage": "/media/posters/2024/10/11/start.jpg"
 	},
 	"vastOptions": {
 		"adList": [],
