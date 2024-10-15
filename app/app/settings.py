@@ -151,7 +151,7 @@ REST_FRAMEWORK = {
     ),
 
     'DEFAULT_THROTTLE_RATES': {
-        'anon': '200/day',
+        'anon': '350/day',
     },
 
     'DEFAULT_AUTHENTICATION_CLASSES': [

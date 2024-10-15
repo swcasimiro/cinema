@@ -5,7 +5,7 @@ from django.contrib.humanize.templatetags.humanize import intcomma
 # import business logic
 # from .services import points, appid, base_url, response
 from .services import MovieService
-from .tasks import api_ranked
+from .tasks import api_ranked, test_api
 
 
 def index(request):
@@ -16,7 +16,8 @@ def index(request):
     data = {
         'index': index,
         'category': category,
-        'kinopoisk': api_ranked.delay()
+        # 'kinopoisk': api_ranked,
+        'id_c': test_api.delay(),
 
         # api https://kinopoiskapiunofficial.tech
         # 'kinopoisk': response.json()['ratingKinopoisk'], # получаем рейтинг кинопоиска
