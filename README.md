@@ -1,5 +1,5 @@
 # cinema
-<img src="https://img.shields.io/badge/django 5.2-black?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> 
+<img src="https://img.shields.io/badge/django 5.1-black?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> 
 <p>Веб-приложение для просмотра сериалов / фильмов онлайн. Сайт предоставляет готовый шаблон для создания своего онлайн-кинотеатра. Гибкий интерфейс, позволяющий заполнить сайт любым рода контента для просмотра.
 Гибкое подключенное API позволяющее узнавать рейтинг в популярных онлайн-кинотеатрах для любого фильма. Возможность делиться своим мнение о просмотренной серии сериала.</p>
 
