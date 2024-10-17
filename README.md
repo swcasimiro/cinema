@@ -17,7 +17,7 @@
 <p><code>Фреймворк и библиотеки</code></p>
 
 <a>
-    <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/>
+    <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> <img src="https://img.shields.io/badge/django-Rest Framework-a20101.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> <img src="https://img.shields.io/badge/CELERY-93b258?style=for-the-badge&logo=celery&logoColor=white" alt="HTML Badge"/>
 </a>
 <br>
 <br>
