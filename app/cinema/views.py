@@ -56,8 +56,8 @@ def movie(request, slug, slug_video):
     comment_len = len(comment_list)
 
     # reviews quantity
-    comment_success = Comment.objects.filter(type_r='Положительная').filter(video_c=video).values('type_r')
-    comment_danger = Comment.objects.filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
+    comment_success = Comment.objects.select_related('video_c').filter(type_r='Положительная').filter(video_c=video).values('type_r')
+    comment_danger = Comment.objects.select_related('video_c').filter(type_r='Отрицательная').filter(video_c=video).values('type_r')
 
     # filters
     filter_success = request.GET.get('filter-success', '')

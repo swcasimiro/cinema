@@ -1,27 +1,27 @@
 # cinema
-<img src="https://img.shields.io/badge/django 5.2-black?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> 
+<img src="https://img.shields.io/badge/django 5.1-black?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> 
 <p>Веб-приложение для просмотра сериалов / фильмов онлайн. Сайт предоставляет готовый шаблон для создания своего онлайн-кинотеатра. Гибкий интерфейс, позволяющий заполнить сайт любым рода контента для просмотра.
 Гибкое подключенное API позволяющее узнавать рейтинг в популярных онлайн-кинотеатрах для любого фильма. Возможность делиться своим мнение о просмотренной серии сериала.</p>
 
 
-<strong><p>Используемые технологии:</p></strong>
-  <p>Все использованные инструменты, которые были задействованы в реализации данного проекта.</p>
+<h4>Используемые технологии:</h3>
+ 
 <div>
-<p><code>Языки программирования</code></p>
+<p>Языки программирования</p>
   <a>
     <img src="https://img.shields.io/badge/python-346c99?style=for-the-badge&logo=python&logoColor=fecd3a" alt="Python Badge"/>
     <img src="https://img.shields.io/badge/javascript-black?style=for-the-badge&logo=javascript&logoColor=f6e019" alt="JavaScript Badge"/>
   </a>
 <br>
 <br>  
-<p><code>Фреймворк и библиотеки</code></p>
+<p>Фреймворк и библиотеки</p>
 
 <a>
-    <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/>
+    <img src="https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> <img src="https://img.shields.io/badge/django-Rest Framework-a20101.svg?style=for-the-badge&logo=django&logoColor=white" alt="Django Badge"/> <img src="https://img.shields.io/badge/CELERY-93b258?style=for-the-badge&logo=celery&logoColor=white" alt="HTML Badge"/>
 </a>
 <br>
 <br>
-<p><code>База данных</code></p>
+<p>База данных</p>
 <a>
   <img src="https://img.shields.io/badge/postgresql-316093?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL Badge"/>
 </a>

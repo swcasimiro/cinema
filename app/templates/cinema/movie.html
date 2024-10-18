@@ -128,6 +128,7 @@
 
 </div>
 </div>
+
     <br>
 {% for el in video_list %}
     <a type="button" href="/movie/{{ el.cat.slug }}/{{ el.slug }}" class="btn btn-dark">{{ el.title }}</a>
@@ -138,6 +139,21 @@
       <br>
 
 
+
+{% for el in category %}
+<h1>{{ el.slug}}</h1>
+
+{% endfor %}
+<a class="btn btn-outline-primary" href="http://vk.com/share.php?url=http://127.0.0.1:8000/movie/{{slug}}/{{ article.get_absolute_url }}"
+   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+   target="_blank" rel="nofollow"> ПОДЕЛИТЬСЯ
+    <img width="20px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/VK_Compact_Logo_%282021-present%29.svg/1024px-VK_Compact_Logo_%282021-present%29.svg.png">
+</a>
+
+
+
+    <br>
+    <br>
 
 <form method="post">
 {% csrf_token %}
